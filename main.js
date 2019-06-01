@@ -34,7 +34,7 @@ function createWindow () {
           submenu : [
               
                  { label : 'Adjust notification value'},
-                 { label : 'IndianCurrency',
+                 { label : 'CryptoCurrency',
                    click() {
                        shell.openExternal('http://www.moneycontrol.com')
                    }

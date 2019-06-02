@@ -3,8 +3,9 @@ const path = require('path')
 const BrowserWindow = electron.remote.BrowserWindow
 const axios = require('axios');
 const notifyBtn = document.getElementById('notifyBtn')
-
+const ipc = electron.ipcRenderer
 var price = document.querySelector('h1')
+var targetPriceVal;
 var targetPrice = document.getElementById('targetPrice')
 
 function getBTC() {
@@ -24,4 +25,9 @@ notifyBtn.addEventListener('click', function (event) {
     win.on('close', function () { win = null })
     win.loadURL(modalPath)
     win.show()
+})
+
+ipc.on('targetPriceVal', function (event, arg) {
+    targetPriceVal = Number(arg);
+    targetPrice.innerHTML = '$'+targetPriceVal.toLocaleString('en')
 })
